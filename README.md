@@ -8,11 +8,11 @@ Repositori ini berisi implementasi sederhana enkripsi RSA dan contoh dasar imple
 
 Repository ini disusun atas pemikiran bersama 7 anggota handal berkualitas (Nama - NRP) :
 - **(5025201004)** Danial Farros Maulana 
-- **(5025201010)** I Putu Bagus Adhi Pradana
 - **(5025201015)** Nadya Permata Sari
 - **(5025201017)** Muhammad Rolanov Wowor
 - **(5025201070)** Aaliyah Farah Adibah
 - **(5025201097)** Benedictus Bimo Cahyo Wicaksono
+- **(5025201132)**	Putu Andhika Pratama
 - **(5025201202)** Aiffah kiysa waafi        
 
 
