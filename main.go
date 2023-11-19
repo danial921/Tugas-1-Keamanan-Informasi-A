@@ -1,6 +1,8 @@
 package main
 
 import (
+	"Tugas1/rsaEncryptor"
+	"Tugas1/utils"
 	"crypto/rand"
 	"crypto/rsa"
 	"crypto/sha256"
@@ -12,7 +14,7 @@ import (
 )
 
 func main() {
-	rsaEncryptor := NewRSAEncryptor(2048)
+	rsaEncryptor := rsaEncryptor.NewRSAEncryptor(2048)
 
 	// Save the public and private keys to files
 	rsaEncryptor.SaveKeysToFile("public.pem", "private.pem")
@@ -28,7 +30,7 @@ func main() {
 
 	// Implementasi secrecy
 	serverPublicKey, err := loadPublicKey("public.pem")
-	CheckError(err)
+	utils.CheckError(err)
 
 	// Klien kirim pesan ke server, berisikan session key yang sudah dienkrip dengan server_public.key.
 	sessionKey := "thisisaverysecretkey"
@@ -65,7 +67,7 @@ func RSAEncryptWithKey(message string, publicKey rsa.PublicKey) string {
 	label := []byte("OAEP Encrypted")
 	rng := rand.Reader
 	ciphertext, err := rsa.EncryptOAEP(sha256.New(), rng, &publicKey, []byte(message), label)
-	CheckError(err)
+	utils.CheckError(err)
 	return base64.StdEncoding.EncodeToString(ciphertext)
 }
 

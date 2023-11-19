@@ -1,6 +1,7 @@
-package main
+package rsaEncryptor
 
 import (
+	"Tugas1/utils"
 	"crypto/rand"
 	"crypto/rsa"
 	"crypto/sha256"
@@ -20,7 +21,7 @@ type RSAEncryptor struct {
 // NewRSAEncryptor generates a new RSAEncryptor with a new key pair.
 func NewRSAEncryptor(bits int) *RSAEncryptor {
 	privateKey, err := rsa.GenerateKey(rand.Reader, bits)
-	CheckError(err)
+	utils.CheckError(err)
 
 	return &RSAEncryptor{
 		PublicKey:  &privateKey.PublicKey,
@@ -31,7 +32,7 @@ func NewRSAEncryptor(bits int) *RSAEncryptor {
 // SaveKeysToFile saves the public and private keys to files.
 func (r *RSAEncryptor) SaveKeysToFile(publicKeyFile, privateKeyFile string) {
 	publicKeyPEM, err := x509.MarshalPKIXPublicKey(r.PublicKey)
-	CheckError(err)
+	utils.CheckError(err)
 	r.saveKeyToFile(publicKeyFile, "PUBLIC KEY", publicKeyPEM)
 	r.saveKeyToFile(privateKeyFile, "RSA PRIVATE KEY", x509.MarshalPKCS1PrivateKey(r.PrivateKey))
 }
@@ -41,7 +42,7 @@ func (r *RSAEncryptor) Encrypt(secretMessage string) string {
 	label := []byte("OAEP Encrypted")
 	rng := rand.Reader
 	ciphertext, err := rsa.EncryptOAEP(sha256.New(), rng, r.PublicKey, []byte(secretMessage), label)
-	CheckError(err)
+	utils.CheckError(err)
 	return base64.StdEncoding.EncodeToString(ciphertext)
 }
 
@@ -51,7 +52,7 @@ func (r *RSAEncryptor) Decrypt(cipherText string) string {
 	label := []byte("OAEP Encrypted")
 	rng := rand.Reader
 	plaintext, err := rsa.DecryptOAEP(sha256.New(), rng, r.PrivateKey, ct, label)
-	CheckError(err)
+	utils.CheckError(err)
 	fmt.Println("\nPlaintext:", string(plaintext))
 	return string(plaintext)
 }
@@ -59,10 +60,10 @@ func (r *RSAEncryptor) Decrypt(cipherText string) string {
 // saveKeyToFile saves the key to a file.
 func (r *RSAEncryptor) saveKeyToFile(filename, keyType string, keyData []byte) {
 	file, err := os.Create(filename)
-	CheckError(err)
+	utils.CheckError(err)
 	defer file.Close()
 
 	keyPEM := &pem.Block{Type: keyType, Bytes: keyData}
 	err = pem.Encode(file, keyPEM)
-	CheckError(err)
+	utils.CheckError(err)
 }
