@@ -30,10 +30,10 @@ Untuk menjalankan program, ikuti langkah-langkah berikut:
 
 1. Pastikan Anda telah menginstal Go di mesin Anda.
 2. clone repositori:
-3. Jalankan program utama:
+3. Jalankan program dengan command:
 
     ```bash
-    go run main.go
+    go run main.go rsa_encryptor.go utils.go
     ```
 
 4. Ikuti petunjuk di termnisl layar untuk melihat implementasi enkripsi RSA dan keamanan dalam aksi.
