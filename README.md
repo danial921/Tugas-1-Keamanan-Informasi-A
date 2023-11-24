@@ -54,16 +54,21 @@ Struktur `RSAEncryptor` menyediakan metode untuk enkripsi dan dekripsi RSA mengg
 Program utama menunjukkan skenario komunikasi klien-server dengan implementasi keamanan:
 
 1. Klien menghasilkan kunci sesi dan mengenkripsinya dengan kunci publik server.
-    ![image](https://github.com/danial921/Tugas-1-Keamanan-Informasi-A/assets/73101444/818ab715-b7f6-4dcb-bf0c-0ea2f6346178)
+
+    ![image](./src/img-1.jpg)
 
 2. Server mendekripsi kunci sesi dan memberikan respons "ok1".
-   ![image](https://github.com/danial921/Tugas-1-Keamanan-Informasi-A/assets/73101444/d46ca5d2-d45c-4614-b899-ea1885bad4b0)
+
+    ![image](./src/img-2.jpg)
 
 3. Klien mengirim pesan terenkripsi ke server menggunakan kunci sesi.
-   ![image](https://github.com/danial921/Tugas-1-Keamanan-Informasi-A/assets/73101444/231a11fc-54a8-4ade-8a8a-6bbea30143f2)
+
+    ![image](./src/img-3.jpg)
 
 4. Server mendekripsi pesan dan memberikan respons "ok2".
-   ![image](https://github.com/danial921/Tugas-1-Keamanan-Informasi-A/assets/73101444/0b0d1737-1ebb-4cbe-b6ff-2a4b402d794a)
+
+    ![image](./src/img-4.jpg)
+
 
 5. Setiap langkah dicetak di layar untuk menggambarkan alur komunikasi.
 
